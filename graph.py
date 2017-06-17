@@ -52,16 +52,15 @@ class Graph:
         queue=[]
         def bfs(self,i):
             print i
-            
-            if(visited[i]==0):
-                visited[i]=1
+            queue.append(i)
+            visited[i]=1
+            while(len(queue)>0):
+                top=queue.pop(0)
                 for j in range(self.nodeNum):
-                    if(self.map[i][j]==1 and visited[j]==0):
+                    if(visited[j]==0 and self.map[top][j]==1):
                         queue.append(j)
-                for k in queue:
-                    if(visited[k]==0):
-                        bfs(self,k)
-                del queue[:]
+                        visited[j]=1
+                        print j
                 
         for i in range(self.nodeNum):
             if(visited[i]==0):
@@ -85,26 +84,26 @@ class Graph:
 
 
 def test():
-    maps=[[-1,1,0],
-    [0,-1,1],
+    maps=[[-1,0,0],
+    [0,-1,0],
     [0,0,-1]]
     G=Graph(maps)
-    print G.getNodeNum()
     G.insertNode()
     G.insertNode()
     G.insertNode()
-    print G.getNodeNum()
-    
-    print G.getEdgeNum()
-    G.addEdge(1,4)
-    print G.getEdgeNum()
-    G.addEdge(4,1)
+    G.insertNode()
+    G.insertNode()
 
-    G.addEdge(4,3)
-    G.addEdge(2,5)
-    G.addEdge(4,5)
-    G.addEdge(3,5)
-    print G.getEdgeNum()
+    G.addEdge(1-1,2-1)
+    G.addEdge(1-1,3-1)
+    G.addEdge(2-1,4-1)
+    G.addEdge(2-1,5-1)
+    G.addEdge(3-1,6-1)
+    G.addEdge(3-1,7-1)
+    G.addEdge(4-1,8-1)
+    G.addEdge(5-1,8-1)
+
+
     
     G.DFSearch()
     G.BFSearch()
