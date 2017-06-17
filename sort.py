@@ -83,19 +83,46 @@ def select_sort(lists):
         index+=1
     return lists
 
+# 堆排序
+# 思想： 建堆的过程是一个不断调整堆的过程
 def heap_sort(lists):
-    def create_heap(lists):
+    length=len(lists)
+    def create_heap(lists,length):
+        for i in range(0,length/2)[::-1]:
+            adjust_heap(lists,i,length)
+    def adjust_heap(lists,i,length):
+        lchild = i*2+1
+        rchild=i*2+2
+        max=i
+        if(lchild<length and lists[max]<lists[lchild]):
+            max = lchild
+        if(rchild<length and lists[max]<lists[rchild]):
+            max = rchild
+        if max!=i:
+            lists[i],lists[max]=lists[max],lists[i]
+            adjust_heap(lists,max,length)
+    def heap_sort_helper(lists):
+        for i in range(0,length)[::-1]:
+            lists[0],lists[i]=lists[i],lists[0]
+            adjust_heap(lists,0,i)
+    create_heap(lists,length)
+    heap_sort_helper(lists)
+    return lists
+
         
 
 
+
     
     
 
-list=[4,2,5,54,23,24,11,3234,3432,56,21,33,663,21]
+# list=[4,2,5,54,23,24,11,3234,3432,56,21,33,663,21]
 # list=[8,2,6,5,11,7]
+list=[16,7,3,20,17,8]
 
 # print insert_sort(list)
 # print shell_sort(list)
 # print bubble_sort(list)
 # print quick_sort(list)
-print select_sort(list)
+# print select_sort(list)
+print heap_sort(list)
