@@ -4,7 +4,18 @@ class Node(object):
         self.rchild=r
         self.parent=p
         self.key=k
+        self.bf=0
+        self.height=0
 
+    def get_bf(self):
+        return self.bf
+
+    def get_height(self):
+        return self.height
+    
+    def set_height(self,h):
+        self.height=h
+        
     def has_left_child(self):
         return self.lchild
     
@@ -17,7 +28,7 @@ class Node(object):
     def is_right_child(self):
         return self.parent and self.parent.rchild==self
 
-class BinarySearchTree(object):
+class AVLTree(object):
     def __init__(self):
         self.root=None
         self.node_size=0
