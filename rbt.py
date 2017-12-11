@@ -10,7 +10,7 @@ import time
 
 RED=True
 BLACK=False
-num=3000
+num=30
 
 class RBNode(object):
     def __init__(self,k,v,c=RED,l=None,r=None):
@@ -362,7 +362,7 @@ def test():
     # turtle.screensize()
     # turtle.setup(width=800, height=800, startx=100, starty=100)
     # drawSnake(70,80,2,15)
-
+    
 
 test()
 
